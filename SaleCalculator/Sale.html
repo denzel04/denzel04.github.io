@@ -37,7 +37,7 @@
       const quantity = parseInt(document.getElementById("quantity").value);
       
       const subtotal = pricePerJersey * quantity;
-      const tax = 0.1 * subtotal;
+      const tax = 0.07 * subtotal;
       const total = subtotal + tax;
 
       document.getElementById("subtotal").innerText = `$${subtotal.toFixed(2)}`;
