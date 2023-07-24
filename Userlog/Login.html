@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Sports Website Sign-Up</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"] {
+      width: 250px;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+
+    input[type="submit"] {
+      padding: 8px 20px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .error-message {
+      color: red;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Sign Up for Sports Website</h1>
+  <form id="signupForm">
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username" required>
+    <span class="error-message" id="usernameError"></span>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" required>
+    <span class="error-message" id="emailError"></span>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password" required>
+    <span class="error-message" id="passwordError"></span>
+
+    <input type="submit" value="Sign Up">
+  </form>
+
+  <script>
+    document.getElementById("signupForm").onsubmit = function (event) {
+      event.preventDefault();
+
+      // Reset error messages
+      document.getElementById("usernameError").textContent = "";
+      document.getElementById("emailError").textContent = "";
+      document.getElementById("passwordError").textContent = "";
+
+      // Get form values
+      const username = document.getElementById("username").value;
+      const email = document.getElementById("email").value;
+      const password = document.getElementById("password").value;
+
+      // Perform validation
+      let isValid = true;
+
+      if (!username.trim()) {
+        document.getElementById("usernameError").textContent = "Username is required.";
+        isValid = false;
+      }
+
+      if (!email.trim()) {
+        document.getElementById("emailError").textContent = "Email is required.";
+        isValid = false;
+      } else if (!isValidEmail(email)) {
+        document.getElementById("emailError").textContent = "Invalid email format.";
+        isValid = false;
+      }
+
+      if (!password.trim()) {
+        document.getElementById("passwordError").textContent = "Password is required.";
+        isValid = false;
+      }
+
+      // If all validation passes, submit the form
+      if (isValid) {
+        alert("Sign-up successful!");
+        // You can perform additional actions here, such as submitting the form to a server.
+        // For the sake of this example, we'll just show an alert.
+      }
+    };
+
+    function isValidEmail(email) {
+      // Simple email validation using a regular expression
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      return emailPattern.test(email);
+    }
+  </script>
+</body>
+
+</html>
