@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<title>Jersey Sales Calculator</title>
+</head>
+<body>
+  <h1>Jersey Sales Calculator</h1>
+  <label for="quantity">Quantity:</label>
+  <input type="number" id="quantity" value="0" min="0" step="1">
+
+  <br>
+
+  <label for="price">Price per Jersey:</label>
+  <span>$12.99</span>
+
+  <br>
+
+  <label for="subtotal">Subtotal:</label>
+  <span id="subtotal">$0.00</span>
+
+  <br>
+
+  <label for="tax">Tax (10%):</label>
+  <span id="tax">$0.00</span>
+
+  <br>
+
+  <label for="total">Total:</label>
+  <span id="total">$0.00</span>
+
+  <br>
+
+  <button onclick="calculateTotal()">Calculate</button>
+
+  <script>
+    function calculateTotal() {
+      const pricePerJersey = 12.99;
+      const quantity = parseInt(document.getElementById("quantity").value);
+      
+      const subtotal = pricePerJersey * quantity;
+      const tax = 0.1 * subtotal;
+      const total = subtotal + tax;
+
+      document.getElementById("subtotal").innerText = `$${subtotal.toFixed(2)}`;
+      document.getElementById("tax").innerText = `$${tax.toFixed(2)}`;
+      document.getElementById("total").innerText = `$${total.toFixed(2)}`;
+    }
+  </script>
