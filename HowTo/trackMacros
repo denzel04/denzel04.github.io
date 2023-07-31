@@ -5,11 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How to Track Your Macros</title>
    
-</head>
-<body>
     <style>
-        body {
-            font-family: Arial, sans-serif; 
+          body {
+            font-family: Arial, sans-serif;
             line-height: 1.6;
             margin: 0;
             padding: 0;
@@ -66,7 +64,8 @@
             text-decoration: underline;
         }
     </style>
-    
+</head>
+<body>
     <header>
         <h1>How to Track Your Macros</h1>
     </header>
@@ -81,7 +80,8 @@
             </ul>
         </section>
         <section>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/7HXkkanqPKA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+             <iframe width="560" height="315" src="https://www.youtube.com/embed/7HXkkanqPKA" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            
             <h2>Step 1: Determine Your Goals</h2>
             <p>Decide whether you want to lose weight, gain muscle, or maintain your current weight. Your goals will determine the macro ratios you need.</p>
         </section>
@@ -103,12 +103,7 @@
         </section>
     </main>
 
-    <!DOCTYPE html>
-<html>
-<head>
-    <title>Macronutrient Calculator</title>
-</head>
-<body>
+    <!-- The macro calculator form and script go here -->
     <h1>Macronutrient Calculator</h1>
     <form>
         <label for="weight">Weight (in pounds):</label>
@@ -190,8 +185,6 @@
             `;
         });
     </script>
-</body>
-</html>
 
     <footer>
         &copy; 2023 Your Macros Tracker
