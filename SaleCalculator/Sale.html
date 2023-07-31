@@ -1,47 +1,103 @@
 <!DOCTYPE html>
 <html>
-<title>Jersey Sales Calculator</title>
+
+<head>
+  <title>Jerseys Sale Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+
+    .container {
+      width: 300px;
+      margin: 0 auto;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+    }
+
+    .form-group input {
+      width: 100%;
+    }
+
+    #result {
+      font-weight: bold;
+    }
+
+    #message {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      font-size: 14px;
+      color: green;
+    }
+  </style>
 </head>
+
 <body>
-  <h1>Jersey Sales Calculator</h1>
-  <label for="quantity">Quantity:</label>
-  <input type="number" id="quantity" value="0" min="0" step="1">
-
-  <br>
-
-  <label for="price">Price per Jersey:</label>
-  <span>$12.99</span>
-
-  <br>
-
-  <label for="subtotal">Subtotal:</label>
-  <span id="subtotal">$0.00</span>
-
-  <br>
-
-  <label for="tax">Tax (7%):</label>
-  <span id="tax">$0.00</span>
-
-  <br>
-
-  <label for="total">Total:</label>
-  <span id="total">$0.00</span>
-
-  <br>
-
-  <button onclick="calculateTotal()">Calculate</button>
+  <div id="message">Spend $200 or more and get a 10% discount.</div>
+  <div class="container">
+    <h2>Jerseys Sale Calculator</h2>
+    <div class="form-group">
+      <label for="quantity">Quantity:</label>
+      <input type="number" id="quantity" min="1" value="1">
+    </div>
+    <div class="form-group">
+      <label for="jersey-price">Jersey Price:</label>
+      <input type="text" id="jersey-price" value="$12.99" readonly>
+    </div>
+    <div class="form-group">
+      <label for="subtotal">Subtotal:</label>
+      <input type="text" id="subtotal" readonly>
+    </div>
+    <div class="form-group">
+      <label for="tax">Sales Tax (7%):</label>
+      <input type="text" id="tax" readonly>
+    </div>
+    <div class="form-group">
+      <label for="discount">Discount:</label>
+      <input type="text" id="discount" readonly>
+    </div>
+    <div class="form-group">
+      <label for="total">Total:</label>
+      <input type="text" id="total" readonly>
+    </div>
+    <button onclick="calculateTotal()">Calculate</button>
+  </div>
 
   <script>
     function calculateTotal() {
-      const pricePerJersey = 12.99;
+      const jerseyCost = 12.99;
+      const taxRate = 0.07;
+      const discountRate = 0.1;
       const quantity = parseInt(document.getElementById("quantity").value);
-      
-      const subtotal = pricePerJersey * quantity;
-      const tax = 0.07 * subtotal;
-      const total = subtotal + tax;
+      const subtotal = jerseyCost * quantity;
+      const tax = subtotal * taxRate;
+      let discount = 0;
 
-      document.getElementById("subtotal").innerText = `$${subtotal.toFixed(2)}`;
-      document.getElementById("tax").innerText = `$${tax.toFixed(2)}`;
-      document.getElementById("total").innerText = `$${total.toFixed(2)}`;
+      if (subtotal > 200) {
+        discount = subtotal * discountRate;
+      }
+
+      const total = subtotal + tax - discount;
+
+      document.getElementById("subtotal").value = subtotal.toFixed(2);
+      document.getElementById("tax").value = tax.toFixed(2);
+      document.getElementById("discount").value = discount.toFixed(2);
+      document.getElementById("total").value = total.toFixed(2);
+
+      if (subtotal < 200) {
+        const amountNeeded = (200 - subtotal).toFixed(2);
+        alert(`Spend $${amountNeeded} more to get the 10% discount.`);
+      }
     }
   </script>
+</body>
+
+</html>
+
